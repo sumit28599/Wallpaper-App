@@ -9,34 +9,21 @@ import UIKit
 
 class SignUPVC: UIViewController {
     
-    private var imageView = UIImageView()
-    private var logintext = UILabel()
-    
-    // UI Elements for Email
+    private var customView = CustomView()
     private var nameStackView = UIStackView()
     private var nameLabel = UILabel()
     private var nameTextField = UITextField()
     private var nameLineView = UIView()
-    // UI Elements for Email
     private var emailStackView = UIStackView()
     private var emailLabel = UILabel()
     private var emailTextField = UITextField()
     private var emailLineView = UIView()
-    
-    // UI Elements for Password
     private var passwordStackView = UIStackView()
     private var passwordLabel = UILabel()
     private var passwordTextField = UITextField()
     private var passwordLineView = UIView()
-    
-    // UI Elements for Login Button
     private var registerButton = UIButton()
     private var loginButton = UIButton()
-    
-    var orLoginWithLabel = UILabel()
-    
-    // UI Elements for Social Login Buttons (e.g., Google, Facebook)
-    var googleLoginButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +31,9 @@ class SignUPVC: UIViewController {
         // Set the background color
         self.view.backgroundColor = .app
         
-        // Set the ImageView
-        setupImageView()
+        // Set the CustomView
+        setupCustomView()
         
-        // Set the SignUp Text
-        setupLoginTextLabel()
         
         // Set the Name View
         setupNameUI()
@@ -75,37 +60,22 @@ class SignUPVC: UIViewController {
     }
     
     
-    // MARK: - Setup Image view  UI
-    func setupImageView() {
-        imageView.image = UIImage(named: "splash")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(imageView)
+    // MARK: - Setup Custom view  UI
+    func setupCustomView() {
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(customView)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            imageView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 190),
-            imageView.heightAnchor.constraint(equalToConstant: 168)
+            customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            customView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
+            customView.widthAnchor.constraint(equalToConstant: 190),
+            customView.heightAnchor.constraint(equalToConstant: 170)
         ])
         
-        imageView.contentMode = .scaleAspectFit
-        
+        customView.setTitle("Sign UP")
     }
     
-    // MARK: - Setup Login Text UI
-    func setupLoginTextLabel() {
-        logintext.font = .font(family: .poppins, sizeFamily: .semibold, size: 34)
-        logintext.text = "Sign UP"
-        logintext.textColor = .white
-        view.addSubview(logintext)
-        logintext.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logintext.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
-            logintext.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-        ])
-        
-    }
-    
+   
     // MARK: - Setup Name UI
     func setupNameUI() {
         nameLineView.frame.size.height = 1
@@ -141,7 +111,7 @@ class SignUPVC: UIViewController {
             nameTextField.heightAnchor.constraint(equalToConstant: 35),
             nameLineView.heightAnchor.constraint(equalToConstant: 1),
             nameStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),  // Center horizontally
-            nameStackView.topAnchor.constraint(equalTo: logintext.bottomAnchor,constant: 50),  // Center vertically
+            nameStackView.topAnchor.constraint(equalTo: customView.bottomAnchor,constant: 50),  // Center vertically
             nameStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Left margin
             nameStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nameStackView.heightAnchor.constraint(equalToConstant: 91)// Right margin

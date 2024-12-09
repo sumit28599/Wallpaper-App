@@ -10,8 +10,7 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-    private var imageView = UIImageView()
-    private var logintext = UILabel()
+    private var customView = CustomView()
     private var emailStackView = UIStackView()
     private var emailLabel = UILabel()
     private var emailTextField = UITextField()
@@ -31,11 +30,9 @@ class LoginVC: UIViewController {
         // Set the background color
         self.view.backgroundColor = .app
         
-        // Set the ImageView
-        setupImageView()
+        // Set the Custom View
+        setupCustomView()
         
-        // Set the Login Text
-        setupLabel()
         
         // Set the Email View
         setupEmailUI()
@@ -62,37 +59,21 @@ class LoginVC: UIViewController {
     }
     
     
-    //MARK: Set the ImageView UI
-    func setupImageView() {
-        imageView.image = UIImage(named: "splash")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(imageView)
+    //MARK: Set the Custom View UI
+    
+    func setupCustomView() {
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(customView)
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            imageView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 190),
-            imageView.heightAnchor.constraint(equalToConstant: 168)
+            customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            customView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
+            customView.widthAnchor.constraint(equalToConstant: 190),
+            customView.heightAnchor.constraint(equalToConstant: 170)
         ])
         
-        imageView.contentMode = .scaleAspectFit
-        
+        customView.setTitle("Login")
     }
-    
-    //MARK: Set the Login UI
-    func setupLabel() {
-        logintext.font = .font(family: .poppins, sizeFamily: .semibold, size: 34)
-        logintext.text = "Login"
-        logintext.textColor = .white
-        view.addSubview(logintext)
-        logintext.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logintext.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
-            logintext.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-        ])
-        
-    }
-    
     
     // MARK: - Setup Email UI
     
@@ -126,7 +107,7 @@ class LoginVC: UIViewController {
             emailTextField.heightAnchor.constraint(equalToConstant: 35),
             emailLineView.heightAnchor.constraint(equalToConstant: 1),
             emailStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),  // Center horizontally
-            emailStackView.topAnchor.constraint(equalTo: logintext.bottomAnchor,constant: 50),  // Center vertically
+            emailStackView.topAnchor.constraint(equalTo: customView.bottomAnchor,constant: 50),  // Center vertically
             emailStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Left margin
             emailStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             emailStackView.heightAnchor.constraint(equalToConstant: 90)// Right margin
@@ -292,67 +273,4 @@ class LoginVC: UIViewController {
         }
     }
 }
-
-
-
-
-
-import UIKit
-
-class SeparatorWithTextView: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupView()
-    }
-    
-    private func setupView() {
-        // Create the left line
-        let leftLine = UIView()
-        leftLine.backgroundColor = UIColor.lightGray
-        leftLine.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Create the right line
-        let rightLine = UIView()
-        rightLine.backgroundColor = UIColor.lightGray
-        rightLine.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Create the label
-        let label = UILabel()
-        label.text = "Or login with"
-        label.textColor = UIColor.lightGray
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Add subviews
-        addSubview(leftLine)
-        addSubview(label)
-        addSubview(rightLine)
-        
-        // Add constraints
-        NSLayoutConstraint.activate([
-            // Left Line
-            leftLine.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            leftLine.trailingAnchor.constraint(equalTo: label.leadingAnchor, constant: -8),
-            leftLine.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            leftLine.heightAnchor.constraint(equalToConstant: 1),
-            
-            // Label
-            label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            // Right Line
-            rightLine.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8),
-            rightLine.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            rightLine.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            rightLine.heightAnchor.constraint(equalToConstant: 1)
-        ])
-    }
-}
-
 

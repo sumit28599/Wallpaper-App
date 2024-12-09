@@ -16,7 +16,7 @@ class HomeVC: UIViewController {
         view.backgroundColor = .app
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            let vc = GalleryVC.instanciate()
+            let vc = LoginVC.instanciate()
             UIStoryboard.makeNavigationControllerAsRootVC(vc)
         }
     }

@@ -8,15 +8,15 @@
 import UIKit
 
 class ForgotPasswordVC: UIViewController {
-    
-    private var imageView = UIImageView()
-    private var forgotText = UILabel()
+
+    private var customView = CustomView()
     private var emailStackView = UIStackView()
     private var emailLabel = UILabel()
     private var emailTextField = UITextField()
     private var emailLineView = UIView()
     private var submitButton = UIButton()
     private var loginButton = UIButton()
+    
       
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,8 @@ class ForgotPasswordVC: UIViewController {
         // Set the background color
         self.view.backgroundColor = .app
         
-        // Set Image view
-        setupImageView()
-        
-        // Set Label
-        setForgotLabel()
+        // Set Custom view
+        setupcustomView()
         
         // Set Email view
         setupEmailUI()
@@ -45,36 +42,22 @@ class ForgotPasswordVC: UIViewController {
             return vc
         }
     
-    //MARK: Set up image view
-        func setupImageView() {
-            imageView.image = UIImage(named: "splash")
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(imageView)
+    //MARK: Set up Custom view
+        func setupcustomView() {
+           
+            customView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(customView)
             NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-                imageView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: 190),
-                imageView.heightAnchor.constraint(equalToConstant: 168)
+                customView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+                customView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
+                customView.widthAnchor.constraint(equalToConstant: 190),
+                customView.heightAnchor.constraint(equalToConstant: 168)
             ])
     
-            imageView.contentMode = .scaleAspectFit
+            customView.setTitle("Forgot Password")
     
         }
-    
-    //MARK: Set up forgot text
-        func setForgotLabel() {
-            forgotText.font = .font(family: .poppins, sizeFamily: .semibold, size: 34)
-            forgotText.text = "Forgot Password"
-            forgotText.textColor = .white
-            view.addSubview(forgotText)
-            forgotText.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                forgotText.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -10),
-                forgotText.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-            ])
-    
-        }
-    
+ 
     //MARK: Set up email view
     func setupEmailUI() {
         emailLineView.frame.size.height = 1
@@ -106,7 +89,7 @@ class ForgotPasswordVC: UIViewController {
                    emailTextField.heightAnchor.constraint(equalToConstant: 35),
                    emailLineView.heightAnchor.constraint(equalToConstant: 1),
                    emailStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),  // Center horizontally
-            emailStackView.topAnchor.constraint(equalTo: forgotText.bottomAnchor,constant: 130),  // Center vertically
+            emailStackView.topAnchor.constraint(equalTo: customView.bottomAnchor,constant: 130),  // Center vertically
                    emailStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Left margin
                    emailStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
                    emailStackView.heightAnchor.constraint(equalToConstant: 91)// Right margin

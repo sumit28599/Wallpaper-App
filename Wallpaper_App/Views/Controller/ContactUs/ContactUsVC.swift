@@ -9,7 +9,7 @@ import UIKit
 
 class ContactUsVC: UIViewController {
     
-    private var imageView = UIImageView()
+    private var customView = CustomView()
     private var contactText = UILabel()
     private var nameStackView = UIStackView()
     private var nameLabel = UILabel()
@@ -41,7 +41,7 @@ class ContactUsVC: UIViewController {
         setupContactLabel()
         
         // Set the ImageView
-        setupImageView()
+        setupcustomView()
         
         // Set the Name View
         setupNameUI()
@@ -69,6 +69,7 @@ class ContactUsVC: UIViewController {
         contactText.font = .font(family: .poppins, sizeFamily: .semibold, size: 25)
         contactText.text = "Contact us"
         contactText.textColor = .white
+        contactText.textAlignment = .right
         view.addSubview(contactText)
         contactText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -105,19 +106,17 @@ class ContactUsVC: UIViewController {
     
     //MARK:  Set the ImageView
     
-        func setupImageView() {
-            imageView.image = UIImage(named: "splash")
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(imageView)
+        func setupcustomView() {
+            customView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(customView)
     
             NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: contactText.bottomAnchor, constant: 40),
-                imageView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: 190),
-                imageView.heightAnchor.constraint(equalToConstant: 168)
+                customView.topAnchor.constraint(equalTo: contactText.bottomAnchor, constant: 40),
+                customView.centerXAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerXAnchor),
+                customView.widthAnchor.constraint(equalToConstant: 190),
+                customView.heightAnchor.constraint(equalToConstant: 170),
+             
             ])
-    
-            imageView.contentMode = .scaleAspectFit
     
         }
     
@@ -155,7 +154,7 @@ class ContactUsVC: UIViewController {
             nameTextField.heightAnchor.constraint(equalToConstant: 40),
             nameLineView.heightAnchor.constraint(equalToConstant: 1),
             nameStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),  // Center horizontally
-            nameStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor,constant: 50),  // Center vertically
+            nameStackView.topAnchor.constraint(equalTo: customView.bottomAnchor,constant: 50),  // Center vertically
             nameStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Left margin
             nameStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nameStackView.heightAnchor.constraint(equalToConstant: 71)// Right margin

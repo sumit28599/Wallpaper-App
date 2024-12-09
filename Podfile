@@ -8,9 +8,6 @@ target 'Wallpaper_App' do
   # Pods for Wallpaper_App
 
 pod 'PromiseKit'
- 
-pod 'Kingfisher', '~> 7.0'
 pod 'Moya'
-pod 'SDWebImage'
 
 end

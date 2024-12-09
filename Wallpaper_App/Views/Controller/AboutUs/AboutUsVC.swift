@@ -9,16 +9,14 @@ import UIKit
 
 class AboutUsVC: UIViewController {
     
-    
     private var backButton = UIButton()
-    
+    var customView = CustomView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .app
         
         // Set back button view
         backButtonAction()
-        
         // Set UI view
         setupUI()
     }
@@ -43,7 +41,6 @@ class AboutUsVC: UIViewController {
     
     func setupUI() {
        
-        
         // "About Us" Label
         let titleLabel = UILabel()
         titleLabel.text = "About us"
@@ -52,12 +49,10 @@ class AboutUsVC: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         
-        // Logo ImageView
-        let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "splash") // Replace with your logo image name
-        logoImageView.contentMode = .scaleAspectFit
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(logoImageView)
+        // Custom ImageView
+        
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(customView)
         
         // Info Section
         let infoView = createSectionView(title: "Info", text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.")
@@ -77,12 +72,12 @@ class AboutUsVC: UIViewController {
             titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 16),
             
-            logoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 190),
-            logoImageView.heightAnchor.constraint(equalToConstant: 170),
+            customView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            customView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            customView.widthAnchor.constraint(equalToConstant: 190),
+            customView.heightAnchor.constraint(equalToConstant: 170),
             
-            infoView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
+            infoView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 40),
             infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
@@ -140,3 +135,5 @@ class AboutUsVC: UIViewController {
         
     }
 }
+
+

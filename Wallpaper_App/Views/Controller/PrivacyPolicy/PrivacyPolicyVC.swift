@@ -9,6 +9,8 @@ import UIKit
 
 class PrivacyPolicyVC: UIViewController {
     private var backButton = UIButton()
+    private var customView = CustomView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .app
@@ -44,11 +46,9 @@ class PrivacyPolicyVC: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         
-        let logoImageView = UIImageView()
-        logoImageView.image = UIImage(named: "splash")
-        logoImageView.contentMode = .scaleAspectFit
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(logoImageView)
+       
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(customView)
         
         let points = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -80,12 +80,12 @@ class PrivacyPolicyVC: UIViewController {
             titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: 16),
             
-            logoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 190),
-            logoImageView.heightAnchor.constraint(equalToConstant: 170),
+            customView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            customView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            customView.widthAnchor.constraint(equalToConstant: 190),
+            customView.heightAnchor.constraint(equalToConstant: 170),
             
-            pointsStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 40),
+            pointsStackView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 40),
             pointsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             pointsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
